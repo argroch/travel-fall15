@@ -11,12 +11,35 @@
 
 <% @country_images.shuffle.each do |picture| %>
 	<p>
-		<%= image_tag picture, alt: "some country...or kittens" %>
+		<%= image_tag picture, alt: "some country...or kittens", class: "img-responsive" %>
 	</p>
 <% end %>
 
 <% @country_image_hash.each do |k,v| %>
 	<p>
-		<%= image_tag v, alt: k %>
+		<%= image_tag v, alt: k, class: "img-responsive" %>
 	</p>
 <% end %>
+
+<p>
+	<%= image_tag "kittens2.jpeg" %>
+</p>
+
+<p>
+	<%= link_to "About Us", about_path(color: @color, size: 13), class: "btn btn-info" %>
+</p>
+<p>
+	<%= link_to "Contact Us", contact_path %>
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
