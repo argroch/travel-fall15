@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :destinations
+  
   root 'welcome#index'
 
   get 'who_we_are_and_what_we_believe' => 'welcome#about', as: :about

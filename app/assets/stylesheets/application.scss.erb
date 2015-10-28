@@ -17,12 +17,26 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import url(https://fonts.googleapis.com/css?family=Russo+One);
 
 
 
+body {
+	background: url(<%= asset_path "bg.jpg" %>) no-repeat center center fixed;
+	background-size: cover;
+}
 
+.container {
+	background: rgba(255,255,255,0.8);
+}
 
+.fancy-text {
+	font-family: 'Russo One', sans-serif;
+}
 
+.center-it {
+	text-align: center;
+}
 
 
 
