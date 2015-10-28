@@ -1,32 +1,25 @@
 <% if notice != nil %>
-	<div class="alert alert-success" role="alert">
+	<div class="alert alert-success mtop-15" role="alert">
 		<p id="notice"><%= notice %></p>
 	</div>
 <% end %>
+<div class="center-it">
+	<h2>
+	  <%= "#{@destination.city}, #{@destination.country}" %>
+	</h2>
 
-<p>
-  <strong>City:</strong>
-  <%= @destination.city %>
-</p>
+	<p>
+	  <%= number_with_delimiter @destination.population %>
+	</p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @destination.country %>
-</p>
+	<p> <%= image_tag @destination.avatar.url(:medium) %></p>
 
-<p>
-  <strong>Population:</strong>
-  <%= @destination.population %>
-</p>
+	<p>
+	  <%= @destination.description %>
+	</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @destination.description %>
-</p>
-
-<%= image_tag @destination.avatar.url %><br />
-<%= image_tag @destination.avatar.url(:medium) %><br />
-<%= image_tag @destination.avatar.url(:thumb) %><br />
-
-<%= link_to 'Edit', edit_destination_path(@destination) %> |
-<%= link_to 'Back', destinations_path %>
+	<div class="well mtop-15">
+		<p><%= link_to 'Edit Destination', edit_destination_path(@destination), class: "btn btn-warning" %></p>
+		<p><%= link_to 'Destination Index', destinations_path, class: "btn btn-primary" %></p>
+	</div>
+</div>

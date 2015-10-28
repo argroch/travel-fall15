@@ -1,10 +1,12 @@
 <% if notice != nil %>
-  <div class="alert alert-danger" role="alert">
+  <div class="alert alert-danger mtop-15" role="alert">
     <p id="notice"><%= notice %></p>
   </div>
 <% end %>
 
-<%= link_to 'New Destination', new_destination_path, class: "btn btn-primary" %>
+<div class="mtop-15">
+  <%= link_to 'New Destination', new_destination_path, class: "btn btn-primary" %>
+</div>
 
 <h1>I Want to Go to There...</h1>
 
@@ -21,9 +23,13 @@
       <div class="panel panel-default center-it">
         <div class="panel-heading"><%= link_to "#{destination.city}, #{destination.country}", destination %></div>
         <div class="panel-body">
-          <p><%= image_tag destination.avatar.url(:thumb) %></p>
+          <% if destination.avatar_file_name != nil %>
+            <p><%= image_tag destination.avatar.url(:thumb) %></p>
+          <% else %>
+            <p><%= image_tag "missing-dest-image.png" %></p>
+          <% end %>
           <p><%= destination.description %></p>
-          <p><strong>Pop:</strong> <%= destination.population %></p>
+          <p><strong>Pop:</strong> <%= number_with_delimiter destination.population %></p>
         </div>
         <div class="panel-footer">
           <%= link_to 'Edit', edit_destination_path(destination), class: "btn btn-warning" %>
@@ -34,4 +40,6 @@
   <% end %>
 </div>
 
-<%= link_to 'New Destination', new_destination_path, class: "btn btn-primary" %>
+<p>
+  <%= link_to 'New Destination', new_destination_path, class: "btn btn-primary" %>
+</p>
