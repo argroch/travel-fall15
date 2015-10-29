@@ -1,0 +1,61 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require bootstrap-sprockets
+//= require jquery_ujs
+//= require_tree .
+
+$(document).ready(function (){
+
+  function initialize() {
+
+  	var myLatLng = new google.maps.LatLng(33.785215,-84.421732);
+
+    var mapOptions = {
+	    center: myLatLng,
+	    zoom: 16,
+	    scrollwheel: false
+    };
+      
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+    var image = "<%= asset_path 'sbw.jpg'%>";
+
+    var marker = new google.maps.Marker({
+		  position: myLatLng,
+		  map: map,
+		  title: 'Where I am.',
+		  icon: image,
+		  animation: google.maps.Animation.BOUNCE
+		});
+
+		var contentString = "<h3>Strongbox West</h3>" + "<p>Where we hold classes</p>";
+
+		var infoWindow = new google.maps.InfoWindow({
+			content: contentString
+		});
+
+		google.maps.event.addListener(marker, 'click', function() {
+    	infoWindow.open(map,marker);
+ 		});
+  	
+  }
+    
+  google.maps.event.addDomListener(window, 'load', initialize);
+});
+
+
+
+
+
+

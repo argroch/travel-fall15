@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
+<%= link_to "Remove Image", remove_image_path(id: @destination.id), class: "btn btn-warning" %>
+
 <%= link_to 'Show', @destination %> |
 <%= link_to 'Back', destinations_path %>

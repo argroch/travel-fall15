@@ -31,6 +31,16 @@ class DestinationsController < ApplicationController
   def edit
   end
 
+  def remove_image
+    destination = Destination.find(params[:id])
+    destination.avatar_file_name = nil
+    destination.avatar_file_size = nil
+    destination.avatar_content_type = nil
+    destination.save
+
+    redirect_to edit_destination_path(destination)
+  end
+
   # POST /destinations
   # POST /destinations.json
   def create
@@ -79,6 +89,15 @@ class DestinationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def destination_params
-      params.require(:destination).permit(:city, :country, :description, :population, :avatar)
+      params.require(:destination).permit(:city, :country, :description, :population, :avatar, :latitude, :longitude, :address)
     end
 end
+
+
+
+
+
+
+
+
+

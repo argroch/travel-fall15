@@ -12,14 +12,28 @@
 	  <%= number_with_delimiter @destination.population %>
 	</p>
 
+	<p>
+		<%= @destination.latitude %>, <%= @destination.longitude %>
+	</p>
+
 	<p> <%= image_tag @destination.avatar.url(:medium) %></p>
 
 	<p>
 	  <%= @destination.description %>
 	</p>
 
+	<div id="destination-map"></div>
+
 	<div class="well mtop-15">
 		<p><%= link_to 'Edit Destination', edit_destination_path(@destination), class: "btn btn-warning" %></p>
 		<p><%= link_to 'Destination Index', destinations_path, class: "btn btn-primary" %></p>
 	</div>
 </div>
+
+<%= javascript_tag do %>
+   latitude = '<%= j @destination.latitude.to_s %>';
+   longitude = '<%= j @destination.longitude.to_s %>';
+   description = '<%= j @destination.description %>';
+   address = '<%= j @destination.city %>';
+<% end %>
+

@@ -22,13 +22,16 @@
     <div class="col-md-4">
       <div class="panel panel-default center-it">
         <div class="panel-heading"><%= link_to "#{destination.city}, #{destination.country}", destination %></div>
-        <div class="panel-body">
+        <div class="panel-body destination-panel">
+
           <% if destination.avatar_file_name != nil %>
             <p><%= image_tag destination.avatar.url(:thumb) %></p>
           <% else %>
             <p><%= image_tag "missing-dest-image.png" %></p>
           <% end %>
-          <p><%= destination.description %></p>
+
+          <p><%= destination.description[0..150] %>... <%= link_to "READ MORE", destination %></p>
+          
           <p><strong>Pop:</strong> <%= number_with_delimiter destination.population %></p>
         </div>
         <div class="panel-footer">
